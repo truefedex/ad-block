@@ -10,10 +10,11 @@ import android.webkit.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.brave.adblock.databinding.ActivityMainBinding
+import com.brave.adblock.example.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
+import com.brave.adblock.example.R
 
 class MainActivity : AppCompatActivity() {
     companion object {
