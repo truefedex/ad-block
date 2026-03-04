@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id 'com.android.library'
+    id 'maven-publish'
 }
 
 android {
@@ -30,11 +31,32 @@ android {
             path 'CMakeLists.txt'
         }
     }
+
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 kotlin {
     compilerOptions {
         jvmTarget.set(JvmTarget.JVM_1_8)
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = 'com.github.truefedex'
+                artifactId = 'ad-block'
+                version = '0.0.4'
+
+                from components.release
+            }
+        }
     }
 }
 
